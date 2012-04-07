@@ -1,0 +1,25 @@
+html, body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+body{
+	color: white;
+	overflow: hidden;
+}
+
+#viewer{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#viewer div{
+	overflow: hidden;
+}
+
+img{
+	background-color: #FFF;
+}
