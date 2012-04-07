@@ -4,7 +4,6 @@ $.fn.pmq = function(){
 	variablePatchwork(function(a){multiSlide(a,{items: lib});});
 }
 
-
 //  supply an array of sources or place anchors in target. Give delay, order and set crop
 $.fn.slideShow = function(/*{items, delay, order, crop}*/){
 	var defaults = {
@@ -12,7 +11,6 @@ $.fn.slideShow = function(/*{items, delay, order, crop}*/){
 			crop: true
 		},
 		slideOptions = $.extend({},defaults, arguments[0])
-	
 	
 	this.each(function(index, item){		
 		var	$this = $(item),
@@ -70,8 +68,6 @@ $.fn.slideShow = function(/*{items, delay, order, crop}*/){
 	
 	return this;
 };
-
-
 
 // 	Divides a div in two subdivs.
 // 	options: {
@@ -230,12 +226,12 @@ function callStack(){
 }
 
 //	creates a randomly updating mozaiq. applies callback on children.
-//	CURRENTLY WORKS ON ALL DIVS! 
+//	CURRENTLY WORKS ON ALL DIVS IN DOM!
 function variablePatchwork(callback){
 	setTimeout(
 		function(index){
 			var again = arguments.callee,
-					$div = $('div').eq(index),
+					$div = $('div').eq(index), // <-- culprit
 					width = $div.width(),
 					height = $div.height(),
 					diagonal = Math.sqrt(Math.pow(width,2) + Math.pow(height,2)),
