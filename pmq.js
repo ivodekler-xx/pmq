@@ -7,8 +7,6 @@ $.fn.pmq = function(){
 
 //  supply an array of sources or place anchors in target. Give delay, order and set crop
 $.fn.slideShow = function(/*{items, delay, order, crop}*/){
-	console.log(arguments);
-	
 	var defaults = {
 			delay: 2000,
 			crop: true
