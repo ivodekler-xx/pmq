@@ -143,10 +143,12 @@ $.fn.mosaic = function(callback, limit, delay){
 function multiSlide(element, slideshowArgs){
 	(element || $('#viewer')).mosaic(
 		function(that){
-			var width = that.width(),
+			var args = $.extend({}, slideshowArgs),
+					width = that.width(),
 					height = that.height(),
 					diagonal = Math.sqrt(Math.pow(width,2) + Math.pow(height,2));
-			$(that).slideShow(slideshowArgs);
+			if(!args.delay) args.delay = Math.round(Math.pow(diagonal, 1.3));
+			$(that).slideShow(args);
 		},		//callback
 		500,	//size limit
 		0	//delay
@@ -225,7 +227,7 @@ function callStack(){
 	else console.log('bail out or empty', mosaicStack);
 }
 
-//	creates a randomly updating mozaiq. applies callback on children.
+//	creates a randomly updating mosaic. applies callback on children.
 //	CURRENTLY WORKS ON ALL DIVS IN DOM!
 function variablePatchwork(callback){
 	setTimeout(
@@ -238,7 +240,7 @@ function variablePatchwork(callback){
 					speed = Math.round(Math.pow(diagonal, 1.3)/2)
 			if(
 				(
-					($div.attr('data-lastSwitch') ? +$div.attr('data-lastSwitch') + 5000 < new Date().getTime() : true )&&
+					($div.attr('data-lastSwitch') ? +$div.attr('data-lastSwitch') + 5000 < new Date().getTime() : true ) &&
 					$div.children('div').length
 				)||
 				$('div').length == 1
